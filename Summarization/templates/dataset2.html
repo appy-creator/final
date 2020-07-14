@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+{% block content %}
+<h1 class="text-center" style="font-variant: small-caps;">List of Datasets</h1>
+{% for folder in List_of_dirs %}
+	<a href="{% url 'get_articles2' dataset folder %}"><button style="margin: 2%;" class="btn btn-dark font-weight-bold">{{folder}}</button></a>
+	{% empty %}
+	<p class="alert alert-danger text-center">No dataset found..!</p>
+{% endfor %}
+{% endblock content %}

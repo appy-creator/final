@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% block content %}
+<style type="text/css">
+	.sidebar{
+		height:85%;
+		width: 10%;
+		position: fixed;
+		top: 10%;
+		left: 0%;
+		border: 1px solid blue;
+		overflow-y: scroll; 
+	}
+	.sidebar>a{
+		margin-left: 15%;
+		margin-bottom: 5%;
+		overflow-x: scroll; 
+	}
+	.content-panel{
+		height: 85%;
+		width: 80%;
+		position: fixed;
+		top: 10%;
+		left: 15%;
+		overflow-y: scroll;
+	}
+	.art-header{
+		font-variant: small-caps;
+		font-size: 22px;
+		background-color: rgb(200,0,0);
+		color: white;
+		position: fixed;
+		top: 10%;
+		left: 0%;
+		width: 10%;
+		height: 6%
+	}
+</style>
+<div class="sidebar">
+	<p class="text-center font-weight-bold art-header">Articles</p><br><br>
+	{% for folder_name in list_folders %}
+	<a href="{% url 'get_contents2' dataset folder folder_name %}"><button class="btn btn-info">{{folder_name}}</button></a><br><br>
+	{% endfor %}
+</div>
+<div class="content-panel">
+	<div class="well">
+		<h3 class="text-center" style="font-variant:small-caps;">Question</h3><br>
+		<p class="alert alert-info" style="font-size: 15px;margin-top: -1%;">{{question}}</p>
+	</div>
+	<div class="well">
+		<h3 class="text-center" style="font-variant: small-caps;">Answer</h3><br>
+		<p class="alert alert-success" style="font-size: 15px;margin-top: -1%">{{answer}}</p>
+	</div>
+	<div class="well">
+		<h3 class="text-center" style="font-variant: small-caps;">Label</h3><br>
+		<p class="alert alert-success" style="font-size: 15px;margin-top: -1%">{{label}}</p>
+	</div>
+</div>
+{% endblock content %}

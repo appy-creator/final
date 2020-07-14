@@ -1,0 +1,129 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Web_Interface_Development</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<style type="">
+		.header{
+			height:10%;
+			width:100%;
+			position:fixed;
+			top:0%;
+			left:0%;
+			background-color: rgb(100,50,100);
+		}
+		.footer{
+			height: 5%;
+			width:100%;
+			position: fixed;
+			top: 95%;
+			left: 0%;
+			background-color: black;
+			color: white;
+			font-weight: bold;
+			padding: 0.2%;
+
+		}
+		.content{
+			height: 80%;
+			width: 100%;
+			position: fixed;
+			top: 10%;
+			left: 0%;
+		}
+		.menu-content{
+			display:block;
+			width:100%;
+		}
+		.menu-content li{
+			display: inline;
+			padding: 15px;
+			margin-top: 20px;
+			font-variant: small-caps;
+			font-weight: bold;
+		}
+		.menu-content li>a:hover{
+			color: black;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+		.menu-content li>a{
+			color:white;
+		}
+		.project-heading{
+			border-right: 5px solid white;
+			font-variant: small-caps;
+			font-weight: bold;
+			color: white;
+			text-shadow: 5px 5px 1px black;
+			font-size: 35px;
+		}
+		.menu{
+			float:left;
+			padding: 5px;
+			margin-top: -25px;
+			overflow: hidden;
+			font-size: 20px;
+			color: white;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="header">
+			<div class="row">
+				<div class="col-md-3 text-center project-heading">
+					<p>Summarization</p>
+				</div>
+				<div class="col-md-9">
+					<nav class="navbar navbar-expand-md">
+						<div class="collapse navbar-collapse menu" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto menu-content">
+						<li class="nav-item active">
+							<a class="nav-link" href="{% url 'home' %}">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'about' %}">About</a>
+						</li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#" >Projects<span class="caret"></span></a>
+							<ul class="dropdown-menu" style="background-color: rgb(100,50,100);">
+								<li>
+									<a href="{% url 'abs_summarize' %}">Abstractive Summarization</a>
+								</li>
+								<li>
+									<a href="{% url 'ext_summarize' %}">Extractive Summarization</a>
+								</li>
+								<li>
+									<a href="{% url 'squad_dataset' %}">SQuAD Dataset</a>
+								</li>
+								<li>
+									<a href="{% url 'odqa_dataset' %}">ODQA Dataset</a>
+								</li>
+							</ul>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'contactus' %}">Contact Us</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="">Help?</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="container content">
+			{% block content %}
+			{% endblock content %}
+		</div>
+		<div class="container-fluid footer">
+			<p class="text-center">&copy;IIITH Summer Internship, 2020</p>
+		</div>
+	</div>
+</body>
+</html>
